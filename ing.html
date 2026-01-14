@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilherme Fontes de Góis | Portfolio FPV & Aerospace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFD700; /* NewBee Yellow */
+            --bg-dark: #0a0a0a;
+            --card-bg: #161616;
+            --text-light: #e0e0e0;
+            --accent-blue: #00d4ff;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Modern Tech Language Selector */
+        .language-selector {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1000;
+            display: flex;
+            gap: 5px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 5px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            backdrop-filter: blur(10px);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .lang-btn {
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+            color: #666;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .lang-btn:hover {
+            color: var(--primary);
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .lang-btn.active {
+            color: #000;
+            background: var(--primary);
+        }
+
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            border-bottom: 4px solid var(--primary);
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
+        .subtitle { font-size: 1.2rem; color: var(--accent-blue); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        section { margin-bottom: 60px; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .aspect-4-3 {
+            aspect-ratio: 4 / 3;
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+        }
+
+        .photo-info { padding: 15px; font-size: 0.9rem; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th { background: #222; color: var(--primary); }
+        tr:hover { background: #1f1f1f; }
+
+        .lecture-list { list-style: none; padding: 0; }
+        .lecture-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-left: 5px solid var(--accent-blue);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            background: var(--primary);
+            color: black;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .btn-contact:hover {
+            background: white;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--primary); font-family: 'Orbitron', sans-serif; font-size: 0.8rem; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #0a0a0a;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--accent-blue); outline: none; }
+        
+        footer { text-align: center; padding: 40px; border-top: 1px solid #333; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<nav class="language-selector">
+    <a href="index.html" class="lang-btn">PT</a>
+    <a href="ing.html" class="lang-btn active">EN</a>
+</nav>
+
+<header>
+    <h1>Guilherme Fontes de Góis</h1>
+    <p class="subtitle">Next-Gen Tech Talent | FPV Specialist | Aerospace Mentor</p>
+    <a href="#contact-section" class="btn-contact">PARTNERSHIP</a>
+</header>
+
+<div class="container">
+    
+    <section id="about">
+        <h2>👨‍🚀 Professional Profile</h2>
+        <p>A <strong>High-Gifting</strong> student and FPV Systems Developer, Guilherme defies age barriers through practical engineering. With deep technical mastery in aerodynamics and electronics, he serves as an <strong>Instructor at Instituto Inovart</strong> and conducts rocketry workshops for university students at institutions such as <strong>UERJ and UNIDOMBOSCO</strong>, among other higher education fronts. A MOBFOG Gold Medalist, he combines next-generation vigor with the technical precision required by the market, focused on driving the performance of drones, rockets, and RC aircraft to new heights of excellence.</p>
+    </section>
+
+    <section id="galeria">
+        <h2>📸 Field Experience</h2>
+        <div class="gallery">
+            <div class="photo-card">
+                <div class="aspect-4-3" style="background-image: url('img/placeholder-uerj.jpg');"></div>
+                <div class="photo-info">
+                    <strong>Academic Mentorship</strong><br>
+                    Rocketry Workshop for UERJ engineering students.
+                </div>
+            </div>
+            <div class="photo-card">
+                <div class="aspect-4-3" style="background-image: url('img/placeholder-ouro.jpg');"></div>
+                <div class="photo-info">
+                    <strong>National Championship</strong><br>
+                    Gold Medal Launch at MOBFOG (National Rocketry Event).
+                </div>
+            </div>
+            <div class="photo-card">
+                <div class="aspect-4-3" style="background-image: url('img/placeholder-fpv.jpg');"></div>
+                <div class="photo-info">
+                    <strong>FPV Engineering</strong><br>
+                    Precision flight and advanced hardware testing.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="premios">
+        <h2>🏆 Awards & Achievements</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Achievement</th>
+                    <th>Event / Institution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>2025</td><td>🥇 Gold Medal – Level 3</td><td>National Rocketry (OBA/MOBFOG)</td></tr>
+                <tr><td>2025</td><td>🥇 Gold Medal – Level 3</td><td>Rio Rocketry Cup (Inovart)</td></tr>
+                <tr><td>2025</td><td>🥈 Silver Medal – Level 3</td><td>National Qualifier (OBA/MOBFOG)</td></tr>
+                <tr><td>2024</td><td>🥇 Gold Medal – Level 3</td><td>National Rocketry (OBA/MOBFOG)</td></tr>
+                <tr><td>2024</td><td>🥈 Silver Medal – Level 3</td><td>National Qualifier (OBA/MOBFOG)</td></tr>
+                <tr><td>2023</td><td>🥈 Silver Medal – Level 3</td><td>National Rocketry (OBA/MOBFOG)</td></tr>
+                <tr><td>2023</td><td>🥇 Gold Medal – Level 3</td><td>National Qualifier (OBA/MOBFOG)</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="palestras">
+        <h2>🎤 Lectures & Workshops</h2>
+        <div class="lecture-list">
+            <div class="lecture-item">
+                <h3>Instructor at Instituto Inovart</h3>
+                <p>Leadership in STEM projects for young innovators.</p>
+            </div>
+            <div class="lecture-item">
+                <h3>Rocketry Workshop (UERJ / RJ)</h3>
+                <p>Technical training for undergraduates, covering aerodynamics, stability, and propulsion.</p>
+            </div>
+            <div class="lecture-item">
+                <h3>Rocketry Workshop (Public Schools)</h3>
+                <p>Technical training for elementary and high school students.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-section">
+        <h2>📩 Partnership Inquiry</h2>
+        <div class="contact-form">
+            <form action="https://formspree.io/f/mvzzojnn" method="POST">
+                <div class="form-group">
+                    <label>NAME:</label>
+                    <input type="text" name="name" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label>EMAIL:</label>
+                    <input type="email" name="_replyto" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>MESSAGE:</label>
+                    <textarea name="message" rows="5" required placeholder="How can we collaborate?"></textarea>
+                </div>
+                <button type="submit" class="btn-contact" style="width: 100%; margin-top: 10px;">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Guilherme Fontes de Góis</p>
+</footer>
+
+</body>
+</html>
